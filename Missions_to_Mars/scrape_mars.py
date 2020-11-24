@@ -2,16 +2,19 @@
 from bs4 import BeautifulSoup
 import requests
 
-# URL of page to be scraped
-
-
 def scrape_info():
+
+    # URL of page to be scraped
     url = 'https://mars.nasa.gov/news/'
+
     # Retrieve page with the requests module
     response = requests.get(url)
 
     # Create BeautifulSoup object; parse with 'html.parser'
     soup = BeautifulSoup(response.text, 'html.parser')
+
+    # Examine the results, then determine element that contains sought info
+    print(soup.prettify())
 
     # Extract title text
     news_title = soup.find_all('div', class_='content_title')[0].text
@@ -32,13 +35,9 @@ def scrape_info():
     url = 'https://www.jpl.nasa.gov/spaceimages/'
     browser.visit(url)
 
-    # featured_image = soup.find_all('article')
+    featured_image = soup.find_all('article')
 
-    # print(featured_image)
-
-    # I see it using ctrl-shift-i.  It is under article -> class -> style
-    # featured_image = soup.find_all('article', class_='carousel_item')[0].text
-    # print(featured_image)
+    print(featured_image)
 
     featured_image_url = url + "images/wallpaper/PIA22911-1920x1200.jpg"
     print(featured_image_url)
@@ -48,15 +47,17 @@ def scrape_info():
     url = 'https://space-facts.com/mars/'
 
     tables = pd.read_html(url)
-    # tables
+    tables
 
     df = tables[0]
-    # df.head(20)
+    df.head(20)
 
     df.columns = ['Measure', 'Result']
-    # df.head(20)
+    df.head(20)
 
     df.to_html('mars_facts.html')
+
+    # Scrape for Image #1
 
     # URL of page to be scraped (Page 1)
     url1 = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/cerberus_enhanced'
@@ -67,6 +68,9 @@ def scrape_info():
     # Create BeautifulSoup object; parse with 'html.parser'
     soup = BeautifulSoup(response.text, 'html.parser')
 
+    # Examine the results, then determine element that contains sought info
+    print(soup.prettify())
+
     result1 = soup.find('div', class_='content')
     link1 = result1.a['href']
     print (link1)
@@ -74,6 +78,8 @@ def scrape_info():
     result1 = soup.find('div', class_='content')
     title1 = result1.h2.text
     print(title1)
+
+    # Scrape for Image 2
 
     # URL of page to be scraped (Page 2)
     url2 = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/schiaparelli_enhanced'
@@ -92,6 +98,8 @@ def scrape_info():
     title2 = result2.h2.text
     print(title2)
 
+    # Scrape for Image 3
+
     # URL of page to be scraped (Page 3)
     url3 = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/syrtis_major_enhanced'
 
@@ -108,6 +116,8 @@ def scrape_info():
     result3 = soup.find('div', class_='content')
     title3 = result3.h2.text
     print(title3)
+
+    # Scrape for Image 4
 
     # URL of page to be scraped (Page 4)
     url4 = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/valles_marineris_enhanced'

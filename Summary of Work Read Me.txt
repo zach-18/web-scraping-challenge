@@ -1,0 +1,24 @@
+This was probably the most challenging homework assignment I have had.
+
+For the Part 1 - Scraping, I was successful in gathering the required outputs which included:
+- News Title
+- News Paragraph
+- Featured Image
+- Mars Facts table
+- Table of Hemisphere images
+
+For Part 2 - MongoDB and Flask:
+- I was able to create a working scrape_mars.py file.
+- On Monday night I met with my tutor, and he helped me get the
+  index.html and the Flask to work.  I did create a PyMongo database, 
+  and I have attached a screen shot to show it:
+	- Mongo Database Image.jpg
+- I also had a working HTML site, captured in a screen shot:
+  	- HTML Screen Shot 1
+- Unfortunately, when I started working on updating the index file to show
+  the elements, the Flask would not run, and I was not able to complete
+  building the final page.
+	- I did create a 2nd "scrape2_mars file that runs.
+
+To summarize, I ran out of time due to work meetings on the day this was due.
+
